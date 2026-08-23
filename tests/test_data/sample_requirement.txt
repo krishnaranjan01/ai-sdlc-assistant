@@ -1,0 +1,8 @@
+ AI SDLC Assistant Requirement
+
+The system should allow a user to upload a software requirement document.
+
+The system should analyze the requirement and identify functional requirements,
+non-functional requirements, business rules, assumptions, and missing information.
+
+The system should support PDF, DOCX, and TXT documents up to 5 MB in size.
