@@ -1,23 +1,36 @@
 from pathlib import Path
 
-from src.tools.document_parser import (
-    extract_text_from_txt,
-)
+from src.tools.document_parser import extract_text
 
 
-def test_txt_file_extraction(tmp_path):
-    """
-    Test that a TXT file can be read successfully.
-    """
+TEST_DATA_DIR = Path(__file__).parent / "test_data"
 
-    test_file = tmp_path / "requirement.txt"
 
-    test_file.write_text(
-        "Build a banking application that allows users to transfer money.",
-        encoding="utf-8",
-    )
+def test_txt_file_extraction():
+    file_path = TEST_DATA_DIR / "sample_requirement.txt"
 
-    result = extract_text_from_txt(str(test_file))
+    result = extract_text(str(file_path))
 
-    assert "banking application" in result
-    assert "transfer money" in result
+    assert "AI SDLC Assistant Requirement" in result
+    assert "functional requirements" in result
+    assert "PDF, DOCX, and TXT" in result
+
+
+def test_docx_file_extraction():
+    file_path = TEST_DATA_DIR / "sample_requirement.docx"
+
+    result = extract_text(str(file_path))
+
+    assert "AI SDLC Assistant Requirement" in result
+    assert "functional requirements" in result
+    assert "PDF, DOCX, and TXT" in result
+
+
+def test_pdf_file_extraction():
+    file_path = TEST_DATA_DIR / "sample_requirement.pdf"
+
+    result = extract_text(str(file_path))
+
+    assert "AI SDLC Assistant Requirement" in result
+    assert "functional requirements" in result
+    assert "PDF, DOCX, and TXT" in result
